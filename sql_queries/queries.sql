@@ -156,3 +156,7 @@ SELECT DATEPART(HOUR, time_of_occurrence) AS hour_of_day,
 FROM processed_bi
 GROUP BY DATEPART(HOUR, time_of_occurrence), part_1_2_crime_severity
 ORDER BY hour_of_day, total_reports DESC;
+
+-- Monthly Trends of Report
+select month(date_of_occurrence) , count(report_id) from processed_bi
+group by month(date_of_occurrence);
