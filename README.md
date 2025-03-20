@@ -24,7 +24,7 @@ This project analyzes crime data reported by the **Los Angeles Police Department
 - **Jupyter Notebook** (Data Processing - `bi_data_processing.ipynb`)
 - **SQL** (Data Extraction - `queries.sql`)
 - **Python** (Data Analysis & Visualization)
-- **Power BI/Tableau** (Dashboard Representation)
+- **Power BI** (Dashboard Representation)
 
 ## 📂 Folder Structure
 
@@ -95,7 +95,7 @@ Full SQL query set can be found in **`queries.sql`**.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/LAPD-Crime-Insights.git
+   git clone https://github.com/Tanzim09/LAPD-Crime-Analysis-and-Prediction.git
    ```
 2. Install dependencies:
    ```bash
@@ -104,7 +104,7 @@ Full SQL query set can be found in **`queries.sql`**.
    ```
 3. Open `bi_data_processing.ipynb` in Jupyter Notebook and execute all cells.
 4. Execute SQL queries in a database environment with LAPD crime data.
-5. Load Power BI/Tableau dashboard for interactive analysis.
+5. Load Power BI dashboard for interactive analysis.
 
 ## 📧 Contact
 
