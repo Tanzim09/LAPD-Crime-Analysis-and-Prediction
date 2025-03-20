@@ -56,6 +56,25 @@ crime-analysis-and-prediction/
 │── README.md
 ```
 
+## 🔄 Data Processing & Cleaning
+
+Data processing was performed in **`bi_data_processing.ipynb`**, including:
+
+- **Data Cleaning**: Removing null values, formatting timestamps, and renaming columns.
+- **Categorization**: Grouping crimes into **Theft, Violent Crimes, Sexual Crimes, Fraud, and Other**.
+- **Date Handling**: Converting `date_of_occurrence` into proper `datetime` format.
+- **Geospatial Data**: Mapping crime locations using latitude and longitude.
+
+## 📈 Time Series Analysis & Prediction
+
+**`time_series_analysis.ipynb`** contains crime forecasting using **Facebook Prophet**:
+
+- **Crime Data Aggregation**: Aggregating crime counts per day.
+- **Preprocessing**: Handling missing values and applying log transformations.
+- **Model Training**: Fitting **Facebook Prophet** for time-series forecasting.
+- **Future Predictions**: Generating **365-day crime forecasts**.
+- **Visualization**: Plotting crime trends and seasonal patterns.
+
 ## 📊 Visualizations
 
 Key insights are displayed using **interactive dashboards** (Power BI/Tableau). Some examples include:
