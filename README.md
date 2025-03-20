@@ -1,75 +1,113 @@
-# Crime Data Analysis and Power BI Dashboard
+# LAPD-Crime-Analysis-and-Prediction
 
-## Project Overview
+## 📌 Overview
 
-This project analyzes crime data provided by the Los Angeles Police Department (LAPD) from 2020 to 2024. The dataset includes crime categories, case statuses, victim details, locations, and timestamps of occurrences.
+This project analyzes crime data reported by the **Los Angeles Police Department (LAPD)** using publicly available datasets from **data.gov**. It provides insights into crime patterns, trends over time, and victim demographics through **data visualization and SQL-based queries**.
 
-The project involves:
+## 🚀 Features
 
-- Data Cleaning and Feature Engineering
-- SQL Queries for Insights
-- Power BI Dashboard for Visualization
+- 📊 **Crime Trend Analysis:** Monthly, yearly, and weekday crime patterns.
+- 📌 **Crime Category Insights:** Breakdown of crime types (Theft, Violent Crimes, Fraud, etc.).
+- ⏳ **Peak Crime Hours:** Identifies the most common crime occurrence times.
+- 📍 **Geographical Crime Distribution:** Top and bottom crime-prone areas in LA.
+- 🔍 **Case Status Insights:** Investigation status distribution of reported crimes.
+- 👥 **Victim Demographics:** Analysis by age, gender, and ethnic background.
+- 📄 **SQL Query Outputs:** Optimized queries to extract meaningful crime statistics.
 
-## Dataset Source
+## 📂 Dataset
 
-**Crime Data by LAPD (2020-2024)**  
-You can access the dataset [here](https://catalog.data.gov/dataset/crime-data-from-2020-to-present).
+- **Source:** [Crime Data from 2020 to Present](https://catalog.data.gov/dataset/crime-data-from-2020-to-present)
+- **Data Processed From:** `processed_bi` table (cleaned and structured data for analysis)
 
-## Data Cleaning & Feature Engineering
+## 🛠️ Tech Stack
 
-Performed various preprocessing tasks in the **Data Cleaning and EDA** folder, including:
+- **Jupyter Notebook** (Data Processing - `bi_data_processing.ipynb`)
+- **SQL** (Data Extraction - `queries.sql`)
+- **Python** (Data Analysis & Visualization)
+- **Power BI/Tableau** (Dashboard Representation)
 
-- Handling missing values
-- Creating generalized columns like holiday classification
-- Ensuring data consistency
+## 📂 Folder Structure
 
-## SQL Queries
+```
+crime-analysis-and-prediction/
+│── dashboard_screenshot/
+│   ├── Crime Overview.png
+│   ├── Trends & Patterns Over Time.png
+│   ├── Victim Analysis & Reporting Behavior.png
+│
+│── dashboards/
+│   ├── crime_dashboard.pbix
+│
+│── data/
+│   ├── processed_bi.zip
+│   ├── raw_data.zip
+│
+│── notebooks/
+│   ├── bi_data_processing.ipynb
+│
+│── sql_queries/
+│   ├── queries.sql
+│   ├── query_outputs.pdf
+│
+│── time_series_analysis/
+│   ├── dataset_crime_count.csv
+│   ├── time_series_analysis.ipynb
+│
+│── README.md
+```
 
-Executed SQL queries for further analysis, available in the **SQL Queries** folder. Queries include:
+## 📊 Visualizations
 
-- Total crimes per category
-- Crime trends over time
-- Top crime locations
-- Victim demographics analysis
+Key insights are displayed using **interactive dashboards** (Power BI/Tableau). Some examples include:
 
-Each query is documented with its query statement and output in sql_queries.
+- **Total Reports by Crime Category**
+- **Total Reports by Weekday**
+- **Case Status Distribution**
+- **Crime Trends Over Time** (Yearly, Monthly, Hourly Analysis)
+- **Crime Victim Analysis**
 
-## Power BI Dashboard
+## 📌 SQL Queries Used
 
-Built an interactive Power BI dashboard featuring various insights. The dashboard includes:
+Below are some key SQL queries used in the analysis:
 
-### Page 1: Crime Overview
+```sql
+-- Total Reports in the Database
+SELECT COUNT(report_id) AS total_reports FROM processed_bi;
 
-- **Bar Chart**: Crime Category vs. Total Crimes
-- **Doughnut Chart**: Crime Severity (FBI classification: Level 1 or 2)
-- **Doughnut Chart**: Case Status (Arrest, Investigation, etc.)
-- **Column Chart**: Weekly Crime Reports
-- **Column Chart**: Violent Crime Trends over Weekdays
-- **Column Chart**: Financial Crime Trends over Weekdays
+-- Crime Reports Grouped by Category
+SELECT crime_category, COUNT(report_id) AS total_reports
+FROM processed_bi
+GROUP BY crime_category
+ORDER BY total_reports DESC;
 
-### Page 2: Victim Analysis & Trends
+-- Peak Crime Hours
+WITH HourlyReports AS (
+    SELECT DATEPART(HOUR, time_of_occurrence) AS report_hour, COUNT(report_id) AS total_reports
+    FROM processed_bi
+    GROUP BY DATEPART(HOUR, time_of_occurrence)
+)
+SELECT report_hour, total_reports FROM HourlyReports ORDER BY total_reports DESC;
+```
 
-- **Bar Chart**: Sexual Crimes vs. Gender
-- **Clustered Column Chart**: Crime Categories Over the Years
-- **Bar Chart**: Victim Age vs. Crime Category
-- **Area Chart**: Hourly Trends of Crime Reports
-- **Area Chart**: Monthly Trends of Crime Reports
-- **Doughnut Chart**: Victim Distribution
+Full SQL query set can be found in **`queries.sql`**.
 
-### Page 3: Crime Hotspots & Reporting Delays
+## 🏗️ How to Run the Project
 
-- **Bar Chart**: Avg Delay in Reporting vs. Crime Category
-- **Bar Chart**: Top 5 Crime Areas
-- **Bar Chart**: Bottom 5 Crime Areas
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/LAPD-Crime-Insights.git
+   ```
+2. Install dependencies:
+   ```bash
+   pip install numpy pandas matplotlib
+   pip install holidays
+   ```
+3. Open `bi_data_processing.ipynb` in Jupyter Notebook and execute all cells.
+4. Execute SQL queries in a database environment with LAPD crime data.
+5. Load Power BI/Tableau dashboard for interactive analysis.
 
-## DAX Functions Include
+## 📧 Contact
 
-- **Total Crimes**: `SUM(CrimeCount)`
-- **Crime Percentage**: `DIVIDE(SUM(CrimeCount), SUMX(ALLSELECTED(CrimeCount)), 0)`
-- **Moving Averages for Trends**
-- **Conditional Formatting for Severity Levels**
-
----
-
-**Author**: [Tanzim Rafat]  
-**Date**: [Crime Report Analysis]
+👤 **Tanzim Rafat**  
+📧 Email: [tanzimrafat069@gmail.com](mailto:tanzimrafat069@gmail.com)  
+🔗 LinkedIn: [Tanzim Rafat](https://www.linkedin.com/in/tanzimrafat/)
