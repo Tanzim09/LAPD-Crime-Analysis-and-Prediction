@@ -4,6 +4,24 @@
 
 This project analyzes crime data reported by the **Los Angeles Police Department (LAPD)** using publicly available datasets from **data.gov**. It provides insights into crime patterns, trends over time, and victim demographics through **data visualization and SQL-based queries**.
 
+## Screenshots
+
+### Crime Overview Dashboard
+![Crime Overview Dashboard](assets/screenshots/crime_overview_dashboard.png)
+
+### Crime Trends & Reporting Patterns
+![Crime Trends & Reporting Patterns](assets/screenshots/crime_trends_patterns.png)
+
+### Victim Demographics & Crime Characteristics
+![Victim Demographics & Crime Characteristics](assets/screenshots/victim_demographics_characteristics.png)
+
+### Prophet Model – Component Analysis
+![Prophet Component Analysis](assets/screenshots/prophet_component_analysis.png)
+
+### Crime Forecasting with Prophet
+![Crime Forecasting with Prophet](assets/screenshots/prophet_forecasting.png)
+
+
 ## Features
 
 - **Crime Trend Analysis:** Monthly, yearly, and weekday crime patterns.
@@ -85,48 +103,5 @@ Key insights are displayed using **interactive dashboards** (Power BI/Tableau). 
 - **Crime Trends Over Time** (Yearly, Monthly, Hourly Analysis)
 - **Crime Victim Analysis**
 
-## SQL Queries Used
 
-Below are some key SQL queries used in the analysis:
 
-```sql
--- Total Reports in the Database
-SELECT COUNT(report_id) AS total_reports FROM processed_bi;
-
--- Crime Reports Grouped by Category
-SELECT crime_category, COUNT(report_id) AS total_reports
-FROM processed_bi
-GROUP BY crime_category
-ORDER BY total_reports DESC;
-
--- Peak Crime Hours
-WITH HourlyReports AS (
-    SELECT DATEPART(HOUR, time_of_occurrence) AS report_hour, COUNT(report_id) AS total_reports
-    FROM processed_bi
-    GROUP BY DATEPART(HOUR, time_of_occurrence)
-)
-SELECT report_hour, total_reports FROM HourlyReports ORDER BY total_reports DESC;
-```
-
-Full SQL query set can be found in **`queries.sql`**.
-
-## How to Run the Project
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Tanzim09/LAPD-Crime-Analysis-and-Prediction.git
-   ```
-2. Install dependencies:
-   ```bash
-   pip install numpy pandas matplotlib
-   pip install holidays
-   ```
-3. Open `bi_data_processing.ipynb` in Jupyter Notebook and execute all cells.
-4. Execute SQL queries in a database environment with LAPD crime data.
-5. Load Power BI dashboard for interactive analysis.
-
-## Contact
-
- **Tanzim Rafat**  
- Email: [tanzimrafat069@gmail.com](mailto:tanzimrafat069@gmail.com)  
- LinkedIn: [Tanzim Rafat](https://www.linkedin.com/in/tanzimrafat/)
